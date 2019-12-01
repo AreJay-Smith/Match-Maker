@@ -96,7 +96,6 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
 
     private void initializeOpenCVDependencies() throws IOException {
         mOpenCvCameraView.enableView();
-
         detector = FeatureDetector.create(FeatureDetector.ORB);
         descriptor = DescriptorExtractor.create(DescriptorExtractor.ORB);
         matcher = DescriptorMatcher.create(DescriptorMatcher.BRUTEFORCE_HAMMING);
@@ -112,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
         keypoints1 = new MatOfKeyPoint();
         detector.detect(img1, keypoints1);
         descriptor.compute(img1, keypoints1, descriptors1);
-
+        // based on code by Akshika Wijesundara
     }
 
 
@@ -256,7 +255,7 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
         }
         Features2d.drawMatches(img1, keypoints1, aInputFrame, keypoints2, goodMatches, outputImg, GREEN, RED, drawnMatches, Features2d.NOT_DRAW_SINGLE_POINTS);
         Imgproc.resize(outputImg, outputImg, aInputFrame.size());
-
+        // based on code by Akshika Wijesundara
         return outputImg;
     }
 
